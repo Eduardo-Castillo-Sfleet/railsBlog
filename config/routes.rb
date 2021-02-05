@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   #get "special", to: "welcome#index"
 
 
-  
+  resources :articles
+    
 
   root 'welcome#index'
 
