@@ -19,11 +19,21 @@ class ArticlesController < ApplicationController
     #POST /articles
     def create
         @article = Article.new(title: params[:article][:title],
-                            body: params[:article][:body])
+                            body: params[:article][:body]) #con Article.create() se hace new y save
         if @article.save
             redirect_to @article
         else
             render :new
         end
+    end
+
+    def update
+        # @article.update_attributes({title: "Nuevo titulo"})
+    end
+
+    def destroy
+        @article = Article.find(params[:id])
+        @article.destroy
+        redirect_to articles_path
     end
 end
