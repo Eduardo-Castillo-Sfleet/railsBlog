@@ -33,6 +33,12 @@ class ArticlesController < ApplicationController
 
     def update
         # @article.update_attributes({title: "Nuevo titulo"})
+        @article = Article.find(params[:id])
+        if @article.update(article_params)
+            redirect_to @article
+        else
+            render :edit
+        end
     end
 
     def destroy
@@ -42,7 +48,7 @@ class ArticlesController < ApplicationController
     end
 
     #Todo lo de abajo de private sera privado
-    private
+    private 
     
     def article_params
         params.require(:article).permit(:title, :body)
