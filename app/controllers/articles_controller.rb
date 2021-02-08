@@ -16,6 +16,10 @@ class ArticlesController < ApplicationController
         @article = Article.new
     end
 
+    def edit 
+        @article = Article.find(params[:id])
+    end
+
     #POST /articles
     def create
         @article = Article.new(title: params[:article][:title],
@@ -35,7 +39,7 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
         @article.destroy
         redirect_to articles_path
-    ends
+    end
 
     #Todo lo de abajo de private sera privado
     private
