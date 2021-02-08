@@ -7,6 +7,8 @@ class ArticlesController < ApplicationController
     #GET /articles/:id
     def show
         @article = Article.find(params[:id])
+
+        #Article.where.not("id = ? OR title = ?", paramas[:id], params[:title]).count
     end
 
     #GET /articles/new
