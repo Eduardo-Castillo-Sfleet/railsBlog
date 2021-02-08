@@ -35,5 +35,12 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
         @article.destroy
         redirect_to articles_path
+    ends
+
+    #Todo lo de abajo de private sera privado
+    private
+    
+    def article_params
+        params.require(:article).permit(:title, :body)
     end
 end
