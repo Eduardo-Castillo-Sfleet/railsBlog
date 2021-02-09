@@ -12,8 +12,6 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <header>
       <nav class="be-red white">
         <ul class="no-list row center-xs">
@@ -26,10 +24,18 @@
           <li class="col-md">
             Programación
           </li>
+          <% if user_signed_in? %>
+          <li>
+            <%= link_to "Cerrar sesion", destroy_user_session_path, method: :delete %>
+          </li>
+          <%end%>
         </ul>
       </nav>
     </header>
 
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
       <%= yield %>
+     
   </body>
 </html>
