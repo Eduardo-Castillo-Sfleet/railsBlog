@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
     #GET /articles/:id
     def show
         #Article.where.not("id = ? OR title = ?", paramas[:id], params[:title]).count
+        @article.update_visits_count
     end
 
     #GET /articles/new
