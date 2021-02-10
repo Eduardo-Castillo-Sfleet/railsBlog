@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
     before_action :authenticate_user!, only: [:create, :new]
+    before_action :set_article, except: [:index, :new, :create]
     #GET /articles
     def index
         @articles = Article.all
@@ -7,8 +8,6 @@ class ArticlesController < ApplicationController
 
     #GET /articles/:id
     def show
-        @article = Article.find(params[:id])
-
         #Article.where.not("id = ? OR title = ?", paramas[:id], params[:title]).count
     end
 
@@ -18,7 +17,6 @@ class ArticlesController < ApplicationController
     end
 
     def edit 
-        @article = Article.find(params[:id])
     end
 
     #POST /articles
@@ -33,7 +31,6 @@ class ArticlesController < ApplicationController
 
     def update
         # @article.update_attributes({title: "Nuevo titulo"})
-        @article = Article.find(params[:id])
         if @article.update(article_params)
             redirect_to @article
         else
@@ -42,13 +39,16 @@ class ArticlesController < ApplicationController
     end
 
     def destroy
-        @article = Article.find(params[:id])
         @article.destroy
         redirect_to articles_path
     end
 
     #Todo lo de abajo de private sera privado
     private 
+
+    def set_article
+        @article = Article.find(params[:id])
+    end
 
     def article_params
         params.require(:article).permit(:title, :body)
