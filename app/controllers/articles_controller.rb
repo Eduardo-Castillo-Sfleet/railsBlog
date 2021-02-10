@@ -22,8 +22,7 @@ class ArticlesController < ApplicationController
 
     #POST /articles
     def create
-        @article = Article.new(title: params[:article][:title],
-                            body: params[:article][:body]) #con Article.create() se hace new y save
+        @article = current_user.articles.new(article_params) #con Article.create() se hace new y save
         if @article.save
             redirect_to @article
         else

@@ -2,6 +2,9 @@
     <h1><%= link_to article.title, article %></h1>
     <p><%= article.body%></p>
     <p><%= article.visits_count%></p>
+    <% if article.user %>
+        <h1>Creado por <%= article.user.email %>!</h1>
+    <% end %>
     <%= link_to "Eliminar", article, method: :delete, class: "btn btn-block btn-danger"%>
     <%= link_to "Editar", edit_article_path(article), class: "btn btn-block btn-success"%>
 <%end%>

@@ -1,2 +1,6 @@
-<h1>¡Bienvenido <%= current_user.email %>!</h1>
+<% if current_user %>
+    <h1>¡Bienvenido <%= current_user.email %>!</h1>
+<%else%>
+    <h1>¡Bienvenido!</h1>
+<% end %>
 <%= link_to "/welcome/index", method: :post %>
