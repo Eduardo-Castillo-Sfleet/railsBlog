@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+    before_action :validate_user, except: [:show, :index] 
     #GET /articles
     def index
         @articles = Article.all
@@ -48,6 +49,10 @@ class ArticlesController < ApplicationController
 
     #Todo lo de abajo de private sera privado
     private 
+
+    def validate_user
+      redirect_to new_user_session_path ,  notice: "Necesitas iniciar sesión"
+    end
     
     def article_params
         params.require(:article).permit(:title, :body)
