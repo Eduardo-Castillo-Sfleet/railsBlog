@@ -3,4 +3,9 @@
 <p><%= @article.visits_count%></p>
 <h3>Comentarios</h3>
 <%=  render "comments/form"%>
+<ul>
+    <% @article.comments.each do |comment|%>
+        <li><%= comment.body %> - by <%= comment.user.email %></li>
+    <%end%>
+</ul>
 <%= link_to "Editar", edit_article_path(@article), class: "btn btn-block btn-success"%>
