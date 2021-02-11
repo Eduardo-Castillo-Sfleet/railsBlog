@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  resources :comments
+  resources :articles do
+    resources :comments
+  end
   devise_for :users
-  #get 'welcome/index'
-  #get "special", to: "welcome#index"
-
-
-  resources :articles
     
 
   root 'welcome#index'
