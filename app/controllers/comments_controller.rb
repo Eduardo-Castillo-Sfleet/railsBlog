@@ -1,8 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[ update destroy ]
+  before_action :set_comment, only: %i[ update destroy show s]
   before_action :set_article
   before_action :authenticate_user!
  
+  def show
+  end
 
   # POST /comments or /comments.json
   def create
