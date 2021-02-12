@@ -1,6 +1,11 @@
 <% if @comment %>
     console.log('Yes')
-    document.getElementById('comments-list').insertAdjacentHTML('beforeEnd', '<%= escape_javascript(render "articles/comment")%>')
+    var list = document.getElementById('comments-list')
+    while(list.firstChild){
+        list.removeChild(list.firstChild)
+    }
+    list.insertAdjacentHTML('afterBegin', '<%= escape_javascript(render "articles/comment")%>')
+    document.getElementById('comments-form').reset();
 <% else %>
     console.log('No')
 <% end %>
