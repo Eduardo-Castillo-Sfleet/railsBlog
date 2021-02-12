@@ -1,5 +1,6 @@
-<% if @comment? %>
-    console.log(<%@comment%>);
+<% if @comment %>
+    console.log('Yes')
+    document.getElementById('comments-list').insertAdjacentHTML('beforeEnd', '<%= escape_javascript(render "articles/comment")%>')
 <% else %>
-    console.log('No',<% @comment %>);
+    console.log('No')
 <% end %>
