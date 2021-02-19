@@ -29,6 +29,8 @@ gem 'devise'
 #Gem de jquey
 gem 'jquery-turbolinks'
 
+gem 'wdm', '>= 0.1.0'
+gem "aasm"
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
