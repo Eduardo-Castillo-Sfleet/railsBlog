@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+    include AASM
+
     belongs_to :user
     has_many :comments
     validates :title, presence: true, uniqueness: true
@@ -11,7 +13,18 @@ class Article < ApplicationRecord
         self.update(visits_count: self.visits_count + 1)
     end
 
+    aasm column: "state" do
+        state :draft, initial: true
+        state :published
 
+        event :publish do
+            transitions from: :draft, to: :published
+        end
+
+        event :unpublish do
+
+        end
+    end
 
     private
 
