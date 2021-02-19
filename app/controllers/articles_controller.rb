@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
     before_action :set_article, except: [:index, :new, :create]
     #GET /articles
     def index
-        @articles = Article.all
+        @articles = Article.ultimos.publicados
     end
 
     #GET /articles/:id

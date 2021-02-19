@@ -13,6 +13,10 @@ class Article < ApplicationRecord
         self.update(visits_count: self.visits_count + 1)
     end
 
+    scope :publicados, ->{ where(state: "published") }
+
+    scope :ultimos, ->{ order("created_at DESC").limit(2) }
+
     aasm column: "state" do
         state :draft, initial: true
         state :published
