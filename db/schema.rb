@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_02_19_011928) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-    t.string "state"
+    t.string "state", default: "draft"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 

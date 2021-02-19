@@ -22,7 +22,7 @@ class Article < ApplicationRecord
         end
 
         event :unpublish do
-
+            transitions from: :published, to: :draft
         end
     end
 
