@@ -15,7 +15,7 @@ class Article < ApplicationRecord
 
     scope :publicados, ->{ where(state: "published") }
 
-    scope :ultimos, ->{ order("created_at DESC").limit(2) }
+    scope :ultimos, ->{ order("created_at DESC") }
 
     aasm column: "state" do
         state :draft, initial: true

@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
     before_action :set_article, except: [:index, :new, :create]
     #GET /articles
     def index
-        @articles = Article.ultimos.publicados
+        @articles = Article.paginate(page: params[:page], per_page: 1)
     end
 
     #GET /articles/:id
