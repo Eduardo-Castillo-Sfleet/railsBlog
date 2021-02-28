@@ -32,6 +32,7 @@ gem 'jquery-turbolinks'
 gem 'wdm', '>= 0.1.0'
 gem "aasm"
 gem 'will_paginate', '~> 3.3.0'
+gem "letter_opener"
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

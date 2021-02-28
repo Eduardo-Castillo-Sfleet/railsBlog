@@ -7,6 +7,7 @@ class Article < ApplicationRecord
     validates :body, presence: true, length: { minimum: 20 }
     #before_create :set_vistis_count
     before_save :set_visits_count
+    after_create :send_email
 
     def update_visits_count
         self.save if self.visits_count.nil?
@@ -31,6 +32,10 @@ class Article < ApplicationRecord
     end
 
     private
+
+    def send_email
+        ArticleMailer.new_article(self).deliver_later
+    end
 
     def set_visits_count
         self.visits_count ||= 0

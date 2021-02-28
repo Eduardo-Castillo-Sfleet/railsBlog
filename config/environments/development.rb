@@ -42,7 +42,8 @@ Rails.application.configure do
   config.active_support.deprecation = :log
 
   #For mailing
-  config.action_mailder.default_url_option = { host: "localhost:3000" }
+  config.action_mailer.default_url_option = { host: "localhost:3000" }
+  config.action_mailer.delivery_method = :letter_opener
 
   # Raise exceptions for disallowed deprecations.
   config.active_support.disallowed_deprecation = :raise
